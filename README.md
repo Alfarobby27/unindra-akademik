@@ -4,7 +4,7 @@
   <img src="assets/img/logo.png" alt="Universitas Indraprasta PGRI Logo" width="500"/>
 </p>
 
-<h1 align="center">Portal akademik modern untuk mengelola sistem informasi universitas dengan antarmuka yang responsif dan user-friendly.</h1>
+<p align="center" style="font-size: 16px;">Portal akademik modern untuk mengelola sistem informasi universitas dengan antarmuka yang responsif dan user-friendly.</p>
 
 ## 📋 Daftar Isi
 
