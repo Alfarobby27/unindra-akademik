@@ -1,9 +1,7 @@
 # Universitas Indraprasta PGRI - Portal Akademik
 
-<h1 align="center">Unindra Akademik</h1>
-
 <p align="center">
-  <img src="assets/img/logo.png" alt="Universitas Indraprasta PGRI Logo" width="150"/>
+  <img src="assets/img/logo.png" alt="Universitas Indraprasta PGRI Logo" width="500"/>
 </p>
 
 <p align="center">Portal akademik modern untuk mengelola sistem informasi universitas dengan antarmuka yang responsif dan user-friendly.</p>
