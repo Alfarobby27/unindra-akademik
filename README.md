@@ -151,11 +151,11 @@ Admin:
 
 Dosen:
 - Username: dosen
-- Password: 123
+- Password: password
 
 Mahasiswa:
 - Username: mahasiswa
-- Password: 123
+- Password: password
 ```
 
 ## 🎯 Penggunaan
