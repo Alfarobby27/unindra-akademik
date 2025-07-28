@@ -8,8 +8,6 @@
 
 ## 📋 Daftar Isi
 
-## 📋 Daftar Isi
-
 - [Fitur Utama](#-fitur-utama)
 - [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
 - [Persyaratan Sistem](#-persyaratan-sistem)
