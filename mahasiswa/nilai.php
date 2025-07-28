@@ -123,7 +123,7 @@ foreach ($transkrip_data as $semester_grades) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transkrip Nilai - MPD University</title>
+    <title>Transkrip Nilai - Unindra</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/mahasiswa_clean.css?v=<?php echo time(); ?>">
     <!-- Font Awesome CDN for icons -->

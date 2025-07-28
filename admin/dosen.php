@@ -28,7 +28,7 @@ $dosen_data = [];
 while ($row = mysqli_fetch_assoc($dosen_result)) {
     $dosen_data[] = [
         'id' => $row['id'],
-        'nip' => $row['nidn'],
+        'nidn' => $row['nidn'],
         'nama' => $row['nama'],
         'email' => $row['email'],
         'bidang_keahlian' => $row['bidang_keahlian'],
@@ -43,22 +43,23 @@ $message_type = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['action'])) {
         if ($_POST['action'] == 'add') {
-            $nip = mysqli_real_escape_string($conn, $_POST['nip']);
+            $nidn = mysqli_real_escape_string($conn, $_POST['nidn']);
             $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-            $email = mysqli_real_escape_string($conn, $_POST['email']);
             $bidang_keahlian = mysqli_real_escape_string($conn, $_POST['bidang_keahlian']);
+            $fakultas_id = (int)$_POST['fakultas'];
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             
             // Insert into users table first
             $user_insert = "INSERT INTO users (username, password, role, full_name, email) 
-                           VALUES ('$nip', '$password', 'dosen', '$nama', '$email')";
+                           VALUES ('$nidn', '$password', 'dosen', '$nama', '$email')";
             
             if (mysqli_query($conn, $user_insert)) {
                 $new_user_id = mysqli_insert_id($conn);
                 
                 // Insert into dosen table
-                $dosen_insert = "INSERT INTO dosen (user_id, nidn, nama, bidang_keahlian, email) 
-                               VALUES ('$new_user_id', '$nip', '$nama', '$bidang_keahlian', '$email')";
+                $dosen_insert = "INSERT INTO dosen (user_id, nidn, nama, bidang_keahlian, email, fakultas_id) 
+                                VALUES ('$new_user_id', '$nidn', '$nama', '$bidang_keahlian', '$email', '$fakultas_id')";
                 
                 if (mysqli_query($conn, $dosen_insert)) {
                     $message = "Dosen berhasil ditambahkan!";
@@ -70,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     while ($row = mysqli_fetch_assoc($dosen_result)) {
                         $dosen_data[] = [
                             'id' => $row['id'],
-                            'nip' => $row['nidn'],
+                            'nidn' => $row['nidn'],
                             'nama' => $row['nama'],
                             'email' => $row['email'],
                             'bidang_keahlian' => $row['bidang_keahlian'],
@@ -86,51 +87,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $message = "Error: " . mysqli_error($conn);
                 $message_type = 'error';
             }
-        }
-        
-        elseif ($_POST['action'] == 'edit') {
+        } elseif ($_POST['action'] == 'edit') {
             $dosen_id = (int)$_POST['dosen_id'];
-            $nip = mysqli_real_escape_string($conn, $_POST['nip']);
+            $nidn = mysqli_real_escape_string($conn, $_POST['nidn']);
             $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-            $email = mysqli_real_escape_string($conn, $_POST['email']);
             $bidang_keahlian = mysqli_real_escape_string($conn, $_POST['bidang_keahlian']);
-            
-            // Update dosen table
+            $fakultas_id = (int)$_POST['fakultas'];
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+            $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
+
+            // Update tabel dosen
             $update_dosen = "UPDATE dosen SET 
-                            nidn = '$nip', 
-                            nama = '$nama', 
-                            email = '$email', 
-                            bidang_keahlian = '$bidang_keahlian' 
-                            WHERE id = $dosen_id";
-            
+                                nidn = '$nidn', 
+                                nama = '$nama', 
+                                bidang_keahlian = '$bidang_keahlian',
+                                email = '$email',
+                                fakultas_id = '$fakultas_id'
+                             WHERE id = $dosen_id";
+
             if (mysqli_query($conn, $update_dosen)) {
-                // Update users table if user_id exists
+                // Ambil user_id dari tabel dosen
                 $get_user_id = "SELECT user_id FROM dosen WHERE id = $dosen_id";
                 $user_result = mysqli_query($conn, $get_user_id);
                 $user_data = mysqli_fetch_assoc($user_result);
-                
+            
                 if ($user_data && $user_data['user_id']) {
+                    // Update tabel users
                     $update_user = "UPDATE users SET 
-                                   username = '$nip', 
-                                   full_name = '$nama', 
-                                   email = '$email' 
-                                   WHERE id = " . $user_data['user_id'];
+                                        username = '$nidn', 
+                                        full_name = '$nama', 
+                                        email = '$email'";
+
+                    // Jika password diisi, update juga
+                    if ($password) {
+                        $update_user .= ", password = '$password'";
+                    }
+                
+                    $update_user .= " WHERE id = " . $user_data['user_id'];
+                
                     mysqli_query($conn, $update_user);
                 }
-                
+            
                 $message = "Data dosen berhasil diperbarui!";
                 $message_type = 'success';
-                
-                // Refresh data
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
             } else {
-                $message = "Error: " . mysqli_error($conn);
+                $message = "Error update dosen: " . mysqli_error($conn);
                 $message_type = 'error';
             }
-        }
-        
-        elseif ($_POST['action'] == 'delete') {
+        } elseif ($_POST['action'] == 'delete') {
             $dosen_id = (int)$_POST['dosen_id'];
             
             // Get user_id before deleting
@@ -198,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         .modal-header {
             padding: 1.5rem 2rem;
-            background: linear-gradient(135deg, #8bd2f2 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #8bd2f2 100%);
             color: white;
             border-radius: 12px 12px 0 0;
             display: flex;
@@ -317,20 +321,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="dashboard-section">
                 <h2><i class="fas fa-user-plus"></i> Tambah Dosen Baru</h2>
                 <div class="form-container">
-                    <form method="POST" class="lecturer-form">
+                    <form method="POST" class="lecturer-form" autocomplete="off">
                         <input type="hidden" name="action" value="add">
-                        
+
+                        <!-- Baris 1: NIDN dan Nama Lengkap -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="nip">NIP/NIDN</label>
-                                <input type="text" id="nip" name="nip" class="form-control" required>
+                                <label for="nidn">NIDN</label>
+                                <input type="text" id="nidn" name="nidn" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
                                 <input type="text" id="nama" name="nama" class="form-control" required>
                             </div>
                         </div>
-                        
+
+                        <!-- Baris 2: Email dan Bidang Keahlian -->
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -341,17 +347,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="text" id="bidang_keahlian" name="bidang_keahlian" class="form-control" required>
                             </div>
                         </div>
-                        
+
+                        <!-- Baris 3: Password dan Konfirmasi Password -->
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" id="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <!-- Placeholder for consistency -->
+                                <label for="confirm_password">Konfirmasi Password</label>
+                                <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
                             </div>
                         </div>
-                        
+
+                        <!-- Baris 4: Fakultas (Dropdown) -->
+                        <div class="form-row">
+                            <div class="form-group" style="width:100%;">
+                                <label for="fakultas">Fakultas</label>
+                                <select id="fakultas" name="fakultas" class="form-control" required>
+                                    <option value="">-- Pilih Fakultas --</option>
+                                    <?php
+                                    $fakultas_query = "SELECT id, nama FROM fakultas ORDER BY nama ASC";
+                                    $result = mysqli_query($conn, $fakultas_query);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option value='{$row['id']}'>{$row['nama']}</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                                
+                        <!-- Tombol Aksi -->
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-plus"></i> Tambah Dosen
@@ -363,6 +389,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </form>
                 </div>
             </div>
+                                
 
             <!-- Lecturers List -->
             <div class="dashboard-section">
@@ -372,7 +399,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>NIP/NIDN</th>
+                                    <th>nidn/nidn</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Bidang Keahlian</th>
@@ -383,17 +410,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <tbody>
                                 <?php foreach ($dosen_data as $dosen): ?>
                                     <tr>
-                                        <td><?php echo htmlspecialchars($dosen['nip']); ?></td>
+                                        <td><?php echo htmlspecialchars($dosen['nidn']); ?></td>
                                         <td><?php echo htmlspecialchars($dosen['nama']); ?></td>
                                         <td><?php echo htmlspecialchars($dosen['email']); ?></td>
                                         <td><?php echo htmlspecialchars($dosen['bidang_keahlian']); ?></td>
                                         <td><?php echo htmlspecialchars($dosen['fakultas'] ?? 'Belum ditentukan'); ?></td>
                                         <td>
                                             <div class="action-buttons">
-                                                <button class="btn btn-sm btn-info" onclick="viewLecturer(<?php echo $dosen['id']; ?>, '<?php echo addslashes($dosen['nama']); ?>', '<?php echo addslashes($dosen['nip']); ?>', '<?php echo addslashes($dosen['email']); ?>', '<?php echo addslashes($dosen['bidang_keahlian']); ?>', '<?php echo addslashes($dosen['fakultas'] ?? 'Belum ditentukan'); ?>')">
+                                                <button class="btn btn-sm btn-info" onclick="viewLecturer(<?php echo $dosen['id']; ?>, '<?php echo addslashes($dosen['nama']); ?>', '<?php echo addslashes($dosen['nidn']); ?>', '<?php echo addslashes($dosen['email']); ?>', '<?php echo addslashes($dosen['bidang_keahlian']); ?>', '<?php echo addslashes($dosen['fakultas'] ?? 'Belum ditentukan'); ?>')">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-warning" onclick="editLecturer(<?php echo $dosen['id']; ?>, '<?php echo addslashes($dosen['nama']); ?>', '<?php echo addslashes($dosen['nip']); ?>', '<?php echo addslashes($dosen['email']); ?>', '<?php echo addslashes($dosen['bidang_keahlian']); ?>')">
+                                                <button class="btn btn-sm btn-warning" onclick="editLecturer(<?php echo $dosen['id']; ?>, '<?php echo addslashes($dosen['nama']); ?>', '<?php echo addslashes($dosen['nidn']); ?>', '<?php echo addslashes($dosen['email']); ?>', '<?php echo addslashes($dosen['bidang_keahlian']); ?>', '<?php echo addslashes($dosen['fakultas']); ?>', '<?php echo addslashes($dosen['email']); ?>', '<?php echo addslashes($dosen['bidang_keahlian']); ?>')">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 <form method="POST" style="display: inline;" onsubmit="return confirmDelete('<?php echo addslashes($dosen['nama']); ?>')">
@@ -425,8 +452,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="modal-body">
                 <div class="detail-grid">
                     <div class="detail-item">
-                        <label>NIP/NIDN:</label>
-                        <span id="viewNip"></span>
+                        <label>nidn/nidn:</label>
+                        <span id="viewnidn"></span>
                     </div>
                     <div class="detail-item">
                         <label>Nama Lengkap:</label>
@@ -470,8 +497,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="editNip">NIP/NIDN</label>
-                            <input type="text" id="editNip" name="nip" class="form-control" required>
+                            <label for="editnidn">nidn/nidn</label>
+                            <input type="text" id="editnidn" name="nidn" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="editNama">Nama Lengkap</label>
@@ -503,8 +530,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php include '../includes/footer.php'; ?>
 
     <script>
-        function viewLecturer(id, nama, nip, email, bidang, fakultas) {
-            document.getElementById('viewNip').textContent = nip;
+        function viewLecturer(id, nama, nidn, email, bidang, fakultas) {
+            document.getElementById('viewnidn').textContent = nidn;
             document.getElementById('viewNama').textContent = nama;
             document.getElementById('viewEmail').textContent = email;
             document.getElementById('viewBidang').textContent = bidang;
@@ -513,9 +540,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             document.getElementById('viewModal').style.display = 'block';
         }
 
-        function editLecturer(id, nama, nip, email, bidang) {
+        function editLecturer(id, nama, nidn, email, bidang) {
             document.getElementById('editDosenId').value = id;
-            document.getElementById('editNip').value = nip;
+            document.getElementById('editnidn').value = nidn;
             document.getElementById('editNama').value = nama;
             document.getElementById('editEmail').value = email;
             document.getElementById('editBidang').value = bidang;

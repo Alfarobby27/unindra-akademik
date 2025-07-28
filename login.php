@@ -87,11 +87,11 @@ session_start();
                             <div class="demo-credentials">
                                 <div class="credential-item">
                                     <label>Username:</label>
-                                    <span class="credential-value" onclick="copyToClipboard('dosen1', this)">dosen</span>
+                                    <span class="credential-value" onclick="copyToClipboard('dosen', this)">dosen</span>
                                 </div>
                                 <div class="credential-item">
                                     <label>Password:</label>
-                                    <span class="credential-value" onclick="copyToClipboard('password', this)">123</span>
+                                    <span class="credential-value" onclick="copyToClipboard('password', this)">password</span>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ session_start();
                             <div class="demo-credentials">
                                 <div class="credential-item">
                                     <label>Username:</label>
-                                    <span class="credential-value" onclick="copyToClipboard('202243502616', this)">202243502616</span>
+                                    <span class="credential-value" onclick="copyToClipboard('mahasiswa', this)">mahasiswa</span>
                                 </div>
                                 <div class="credential-item">
                                     <label>Password:</label>

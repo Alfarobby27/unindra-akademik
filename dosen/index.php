@@ -22,10 +22,33 @@ $user = mysqli_fetch_assoc($result);
 
 $dosen_id = $user['dosen_id'];
 
-// Get statistics from database
-$stats = ['mata_kuliah' => 0, 'mahasiswa' => 0, 'jadwal_hari_ini' => 0, 'tugas_pending' => 0];
+// Get real statistics data from database
+$stats_query = "SELECT 
+    (SELECT COUNT(*) FROM mahasiswa) as total_mahasiswa,
+    (SELECT COUNT(*) FROM dosen) as total_dosen,
+    (SELECT COUNT(*) FROM mata_kuliah) as total_mata_kuliah,
+    (SELECT COUNT(DISTINCT kelas) FROM jadwal) as total_kelas";
+$stats_result = mysqli_query($conn, $stats_query);
+$stats_data = mysqli_fetch_assoc($stats_result);
+
+$total_mahasiswa = $stats_data['total_mahasiswa'];
+$total_dosen = $stats_data['total_dosen'];
+$total_mata_kuliah = $stats_data['total_mata_kuliah'];
+$total_kelas = $stats_data['total_kelas'];
+
 
 if ($dosen_id) {
+
+    // Get jumlah tugas pending yang perlu dinilai oleh dosen
+    $tugas_pending_query = "
+        SELECT COUNT(*) AS total 
+        FROM pengumpulan_tugas pt
+        JOIN tugas t ON pt.tugas_id = t.id
+        JOIN mata_kuliah mk ON t.mata_kuliah_id = mk.id
+        WHERE mk.dosen_id = '$dosen_id' AND pt.nilai IS NULL
+        ";
+
+
     // Get mata kuliah count
     $mk_query = "SELECT COUNT(*) as total FROM mata_kuliah WHERE dosen_id = '$dosen_id'";
     $mk_result = mysqli_query($conn, $mk_query);
@@ -92,7 +115,7 @@ if ($dosen_id) {
                     </div>
                     <div class="stat-info">
                         <h3>Mata Kuliah</h3>
-                        <p class="stat-number"><?php echo $stats['mata_kuliah']; ?></p>
+                        <p class="stat-number"><?php echo $total_mata_kuliah; ?></p>
                         <small>Total mata kuliah yang diampu</small>
                     </div>
                 </div>
@@ -103,7 +126,7 @@ if ($dosen_id) {
                     </div>
                     <div class="stat-info">
                         <h3>Total Mahasiswa</h3>
-                        <p class="stat-number"><?php echo $stats['mahasiswa']; ?></p>
+                        <p class="stat-number"><?php echo $total_mahasiswa; ?></p>
                         <small>Mahasiswa yang mengikuti kelas</small>
                     </div>
                 </div>
@@ -114,7 +137,7 @@ if ($dosen_id) {
                     </div>
                     <div class="stat-info">
                         <h3>Jadwal Hari Ini</h3>
-                        <p class="stat-number"><?php echo $stats['jadwal_hari_ini']; ?></p>
+                        <p class="stat-number"><?php echo $total_kelas; ?></p>
                         <small>Kelas yang harus diajar</small>
                     </div>
                 </div>
@@ -125,7 +148,7 @@ if ($dosen_id) {
                     </div>
                     <div class="stat-info">
                         <h3>Tugas Pending</h3>
-                        <p class="stat-number"><?php echo $stats['tugas_pending']; ?></p>
+                        <p class="stat-number">0</p>
                         <small>Tugas yang perlu dinilai</small>
                     </div>
                 </div>

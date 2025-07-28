@@ -83,9 +83,6 @@
                                 </path>
                             </svg>
                         </span>
-                        <div class="floating-icon">
-                            <img src="assets/img/graduation-cap.png" alt="Icon" class="icon-image">
-                        </div>
                     </div>
                 </div>
             </div>

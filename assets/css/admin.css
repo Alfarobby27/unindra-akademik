@@ -1,4 +1,4 @@
-/* MPD University Admin Panel CSS */
+/* Unindra Admin Panel CSS */
 /* Consolidated styles for all admin pages */
 
 /* Base Admin Styles */
@@ -1865,7 +1865,7 @@ select:focus {
 }
 
 .day-header {
-  background: linear-gradient(135deg, #8bd2f2 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f2027 0%, #8bd2f2 100%);
   color: white;
   padding: 1rem;
   font-weight: 600;

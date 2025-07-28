@@ -591,7 +591,7 @@ while ($row = mysqli_fetch_assoc($jadwal_result)) {
                 modal.className = 'modal';
                 modal.innerHTML = `
                     <div class="modal-content" style="background: white; margin: 5% auto; padding: 0; border-radius: 12px; width: 90%; max-width: 600px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-                        <div class="modal-header" style="background: linear-gradient(135deg, #8bd2f2 0%, #764ba2 100%); color: white; padding: 1.5rem 2rem; border-radius: 12px 12px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                        <div class="modal-header" style="background: linear-gradient(135deg, #0f2027 0%, #8bd2f2 100%); color: white; padding: 1.5rem 2rem; border-radius: 12px 12px 0 0; display: flex; justify-content: space-between; align-items: center;">
                             <h3 style="margin: 0; font-size: 1.25rem;" id="modalTitle"></h3>
                             <span class="close" onclick="closeModal()" style="font-size: 2rem; cursor: pointer; background: none; border: none; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; transition: background 0.3s ease;">&times;</span>
                         </div>

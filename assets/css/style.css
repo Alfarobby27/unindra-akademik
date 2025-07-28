@@ -403,33 +403,6 @@ footer {
   }
 }
 
-.floating-icon {
-  position: absolute;
-  top: -2.5rem;
-  right: 2.5rem;
-  opacity: 0.3;
-  animation: floating 4s ease-in-out infinite;
-  width: 5rem;
-}
-
-@media (min-width: 992px) {
-  .floating-icon {
-    top: -3rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .floating-icon {
-    top: 1.25rem;
-  }
-}
-
-.icon-image {
-  width: 100%;
-  transform: rotate(12deg);
-  filter: invert(1);
-}
-
 .hero-section .container {
   margin-top: 0;
   padding-top: 2.5rem;

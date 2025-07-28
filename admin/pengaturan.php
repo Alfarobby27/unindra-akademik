@@ -49,7 +49,7 @@ $stats = mysqli_fetch_assoc($stats_result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengaturan Sistem - MPD University</title>
+    <title>Pengaturan Sistem - Unindra</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -61,7 +61,7 @@ $stats = mysqli_fetch_assoc($stats_result);
         <div class="dashboard-container">
             <div class="dashboard-header">
                 <h1><i class="fas fa-cogs"></i> Pengaturan Sistem</h1>
-                <p>Konfigurasi dan manajemen pengaturan sistem MPD University</p>
+                <p>Konfigurasi dan manajemen pengaturan sistem Universitas Indraprasta PGRI</p>
             </div>
 
             <?php if ($message): ?>
@@ -81,7 +81,7 @@ $stats = mysqli_fetch_assoc($stats_result);
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="site_name">Nama Situs</label>
-                                <input type="text" id="site_name" name="site_name" class="form-control" value="MPD University" required>
+                                <input type="text" id="site_name" name="site_name" class="form-control" value="Universitas Indraprasta PGRI" required>
                             </div>
                             <div class="form-group">
                                 <label for="site_url">URL Situs</label>

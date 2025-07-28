@@ -110,16 +110,6 @@ $check_tugas = "SELECT COUNT(*) as count FROM tugas";
 $check_result = mysqli_query($conn, $check_tugas);
 $check_data = mysqli_fetch_assoc($check_result);
 
-if ($check_data['count'] == 0) {
-    $sample_tugas = "INSERT INTO tugas (mata_kuliah_id, judul, deskripsi, jenis, deadline, file_tugas, priority) VALUES
-    (1, 'Implementasi Dashboard Admin dengan PHP', 'Membuat dashboard admin lengkap dengan fitur CRUD, autentikasi, dan laporan.', 'Tugas Individu', '2024-12-05 23:59:00', 'PWL_Tugas3_Dashboard.pdf', 'high'),
-    (2, 'Normalisasi Database E-Commerce', 'Merancang dan menormalisasi database untuk sistem e-commerce dengan minimal 10 tabel.', 'Tugas Individu', '2024-12-01 23:59:00', 'DB_Tugas2_Normalisasi.pdf', 'medium'),
-    (1, 'REST API dengan Authentication', 'Membuat REST API lengkap dengan sistem autentikasi JWT.', 'Tugas Individu', '2024-11-20 23:59:00', 'PWL_Tugas2_API.pdf', 'medium'),
-    (3, 'Analisis Kebutuhan Sistem Informasi', 'Membuat dokumen analisis kebutuhan untuk sistem informasi akademik.', 'Tugas Kelompok', '2024-11-28 23:59:00', 'RPL_Tugas1_Analisis.pdf', 'high'),
-    (5, 'Implementasi Algoritma Machine Learning', 'Mengimplementasikan algoritma klasifikasi menggunakan Python dan scikit-learn.', 'Tugas Individu', '2024-12-10 23:59:00', 'AI_Tugas4_ML.pdf', 'medium')";
-    mysqli_query($conn, $sample_tugas);
-}
-
 // Get assignments for this student
 $assignments_query = "SELECT 
     t.id,
@@ -265,7 +255,7 @@ function timeUntilDeadline($deadline) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tugas - Portal Mahasiswa MPD University</title>
+    <title>Tugas - Portal Mahasiswa Unindra</title>
     <link rel="stylesheet" href="../assets/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../assets/css/mahasiswa_clean.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -525,7 +525,7 @@ $stats = mysqli_fetch_assoc($stats_result);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, #8bd2f2 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #8bd2f2 100%);
             color: white;
         }
 
@@ -643,12 +643,12 @@ $stats = mysqli_fetch_assoc($stats_result);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #8bd2f2 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #8bd2f2 100%);
             color: white;
         }
 
         .btn-primary:hover:not(:disabled) {
-            background: linear-gradient(135deg, #8ABBD1FF 0%, #6a4190 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #8bd2f2 100%);
             transform: translateY(-1px);
         }
 

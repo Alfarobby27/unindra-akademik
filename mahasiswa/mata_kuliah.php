@@ -191,7 +191,7 @@ if ($_POST && isset($_POST['enroll_course'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mata Kuliah - MPD University</title>
+    <title>Mata Kuliah - Unindra</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/mahasiswa_clean.css?v=<?php echo time(); ?>">
     <!-- Font Awesome CDN for icons -->

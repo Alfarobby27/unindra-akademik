@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jul 2025 pada 21.35
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Jul 28, 2025 at 06:19 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absensi`
+-- Table structure for table `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -37,10 +37,24 @@ CREATE TABLE `absensi` (
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`id`, `mata_kuliah_id`, `mahasiswa_id`, `tanggal`, `status`, `keterangan`, `created_at`) VALUES
+(29, 20, 23, '2025-07-26', 'Hadir', '', '2025-07-28 10:57:25'),
+(30, 20, 22, '2025-07-26', 'Izin', '', '2025-07-28 10:57:26'),
+(31, 18, 23, '2025-07-25', 'Hadir', '', '2025-07-28 11:05:32'),
+(32, 18, 22, '2025-07-25', 'Hadir', '', '2025-07-28 11:05:32'),
+(33, 19, 23, '2025-07-26', 'Hadir', '', '2025-07-28 11:15:35'),
+(34, 19, 22, '2025-07-26', 'Sakit', '', '2025-07-28 11:15:35'),
+(35, 21, 23, '2025-07-26', 'Hadir', '', '2025-07-28 11:16:02'),
+(36, 21, 22, '2025-07-26', 'Alpha', '', '2025-07-28 11:16:02');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin_logs`
+-- Table structure for table `admin_logs`
 --
 
 CREATE TABLE `admin_logs` (
@@ -56,7 +70,7 @@ CREATE TABLE `admin_logs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `articles`
+-- Table structure for table `articles`
 --
 
 CREATE TABLE `articles` (
@@ -64,6 +78,7 @@ CREATE TABLE `articles` (
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `excerpt` text DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
   `author_id` int(11) DEFAULT NULL,
   `status` varchar(20) DEFAULT 'published',
   `featured_image` varchar(255) DEFAULT NULL,
@@ -73,20 +88,20 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `articles`
+-- Dumping data for table `articles`
 --
 
-INSERT INTO `articles` (`id`, `title`, `content`, `excerpt`, `author_id`, `status`, `featured_image`, `published_at`, `created_at`, `updated_at`) VALUES
-(1, 'Selamat Datang di Sistem Akademik Universitas Indraprasta PGRI', 'Sistem Akademik Universitas Indraprasta PGRI telah resmi diluncurkan dengan berbagai fitur terdepan untuk mendukung kegiatan akademik mahasiswa, dosen, dan staff administrasi. Sistem ini menyediakan platform terintegrasi untuk manajemen perkuliahan, nilai, absensi, dan berbagai layanan akademik lainnya.\r\n\r\nDengan teknologi terkini, kami berkomitmen memberikan pengalaman terbaik bagi seluruh civitas akademika dalam mengakses informasi dan layanan akademik.', 'Sistem Akademik Universitas Indraprasta PGRI diluncurkan dengan fitur-fitur terdepan untuk mendukung kegiatan akademik.', 1, 'published', NULL, '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
-(2, 'Panduan Penggunaan Portal Akademik', 'Portal akademik Universitas Indraprasta PGRI dirancang dengan antarmuka yang user-friendly dan mudah diakses. Artikel ini akan memandu Anda dalam menggunakan berbagai fitur yang tersedia, mulai dari login hingga mengakses nilai dan jadwal perkuliahan.\r\n\r\nSetiap user memiliki dashboard yang disesuaikan dengan perannya masing-masing, baik sebagai mahasiswa, dosen, maupun admin.', 'Panduan lengkap penggunaan portal akademik Universitas Indraprasta PGRI untuk semua user.', 1, 'published', NULL, '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
-(3, 'Kebijakan Akademik Terbaru 2025', 'Universitas Indraprasta PGRI telah mengimplementasikan beberapa kebijakan akademik terbaru yang mulai berlaku pada tahun akademik 2025. Kebijakan ini mencakup sistem penilaian, absensi, dan berbagai prosedur akademik lainnya yang ditujukan untuk meningkatkan kualitas pendidikan.\r\n\r\nSemua civitas akademika diharapkan memahami dan mengikuti kebijakan-kebijakan yang telah ditetapkan.', 'Kebijakan akademik terbaru Universitas Indraprasta PGRI yang berlaku mulai tahun 2025.', 1, 'published', NULL, '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
-(4, 'Tips Sukses Kuliah Online', 'Menghadapi era digital, Universitas Indraprasta PGRI menyediakan berbagai tips dan strategi untuk mahasiswa agar dapat sukses dalam perkuliahan online. Artikel ini membahas tentang manajemen waktu, teknologi yang dibutuhkan, dan cara efektif mengikuti kuliah virtual.\r\n\r\nKuliah online memerlukan disiplin dan strategi khusus agar dapat mencapai hasil pembelajaran yang optimal.', 'Tips dan strategi sukses mengikuti perkuliahan online di Universitas Indraprasta PGRI.', 1, 'published', NULL, '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
-(5, 'Prestasi Mahasiswa Universitas Indraprasta PGRI 2024', 'Mahasiswa Universitas Indraprasta PGRI kembali meraih berbagai prestasi gemilang di tingkat nasional dan internasional. Dari kompetisi programming, penelitian ilmiah, hingga inovasi teknologi, mahasiswa kami terus menunjukkan dedikasi dan kemampuan terbaik.\r\n\r\nPrestasi-prestasi ini membuktikan kualitas pendidikan dan pembinaan yang diberikan oleh Universitas Indraprasta PGRI.', 'Berbagai prestasi gemilang yang diraih mahasiswa Universitas Indraprasta PGRI di tahun 2025.', 1, 'published', NULL, '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25');
+INSERT INTO `articles` (`id`, `title`, `content`, `excerpt`, `category`, `author_id`, `status`, `featured_image`, `published_at`, `created_at`, `updated_at`) VALUES
+(2, 'Panduan Penggunaan Portal Akademik', 'Portal akademik Universitas Indraprasta PGRI dirancang dengan antarmuka yang user-friendly dan mudah diakses. Artikel ini akan memandu Anda dalam menggunakan berbagai fitur yang tersedia, mulai dari login hingga mengakses nilai dan jadwal perkuliahan.\r\n\r\nSetiap user memiliki dashboard yang disesuaikan dengan perannya masing-masing, baik sebagai mahasiswa, dosen, maupun admin.', 'Portal akademik Universitas Indraprasta PGRI dirancang dengan antarmuka yang user-friendly dan mudah diakses. Artikel ini akan memandu Anda dalam menggunakan berbagai fitur yang tersedia, mulai dari l...', 'Akademik', 1, 'published', 'article_1753620265.jpg', '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
+(3, 'Kebijakan Akademik Terbaru 2025', 'Universitas Indraprasta PGRI telah mengimplementasikan beberapa kebijakan akademik terbaru yang mulai berlaku pada tahun akademik 2025. Kebijakan ini mencakup sistem penilaian, absensi, dan berbagai prosedur akademik lainnya yang ditujukan untuk meningkatkan kualitas pendidikan.\r\n\r\nSemua civitas akademika diharapkan memahami dan mengikuti kebijakan-kebijakan yang telah ditetapkan.', 'Universitas Indraprasta PGRI telah mengimplementasikan beberapa kebijakan akademik terbaru yang mulai berlaku pada tahun akademik 2025. Kebijakan ini mencakup sistem penilaian, absensi, dan berbagai p...', 'Akademik', 1, 'published', 'article_1753620297.jpg', '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
+(4, 'Tips Sukses Kuliah Online', 'Menghadapi era digital, Universitas Indraprasta PGRI menyediakan berbagai tips dan strategi untuk mahasiswa agar dapat sukses dalam perkuliahan online. Artikel ini membahas tentang manajemen waktu, teknologi yang dibutuhkan, dan cara efektif mengikuti kuliah virtual.\r\n\r\nKuliah online memerlukan disiplin dan strategi khusus agar dapat mencapai hasil pembelajaran yang optimal.', 'Menghadapi era digital, Universitas Indraprasta PGRI menyediakan berbagai tips dan strategi untuk mahasiswa agar dapat sukses dalam perkuliahan online. Artikel ini membahas tentang manajemen waktu, te...', 'Pengumuman', 1, 'published', 'article_1753620322.jpg', '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
+(5, 'Prestasi Mahasiswa Universitas Indraprasta PGRI 2024', 'Mahasiswa Universitas Indraprasta PGRI kembali meraih berbagai prestasi gemilang di tingkat nasional dan internasional. Dari kompetisi programming, penelitian ilmiah, hingga inovasi teknologi, mahasiswa kami terus menunjukkan dedikasi dan kemampuan terbaik.\r\n\r\nPrestasi-prestasi ini membuktikan kualitas pendidikan dan pembinaan yang diberikan oleh Universitas Indraprasta PGRI.', 'Mahasiswa Universitas Indraprasta PGRI kembali meraih berbagai prestasi gemilang di tingkat nasional dan internasional. Dari kompetisi programming, penelitian ilmiah, hingga inovasi teknologi, mahasis...', 'Pengumuman', 1, 'published', 'article_1753620358.jpg', '2025-07-16 22:22:25', '2025-07-16 22:22:25', '2025-07-16 22:22:25'),
+(6, 'Selamat Datang di Sistem Akademik Universitas Indraprasta PGRI', 'Sistem Akademik Universitas Indraprasta PGRI telah resmi diluncurkan dengan berbagai fitur terdepan untuk mendukung kegiatan akademik mahasiswa, dosen, dan staff administrasi. Sistem ini menyediakan platform terintegrasi untuk manajemen perkuliahan, nilai, absensi, dan berbagai layanan akademik lainnya.\r\n\r\nDengan teknologi terkini, kami berkomitmen memberikan pengalaman terbaik bagi seluruh civitas akademika dalam mengakses informasi dan layanan akademik.', 'Sistem Akademik Universitas Indraprasta PGRI telah resmi diluncurkan dengan berbagai fitur terdepan untuk mendukung kegiatan akademik mahasiswa, dosen, dan staff administrasi. Sistem ini menyediakan p...', 'Akademik', 1, 'published', 'article_1753619977.png', '2025-07-27 19:39:37', '2025-07-27 19:39:37', '2025-07-27 19:39:37');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita_akademik`
+-- Table structure for table `berita_akademik`
 --
 
 CREATE TABLE `berita_akademik` (
@@ -102,7 +117,7 @@ CREATE TABLE `berita_akademik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `berita_akademik`
+-- Dumping data for table `berita_akademik`
 --
 
 INSERT INTO `berita_akademik` (`id`, `judul`, `isi`, `tanggal`, `gambar`, `ringkasan`, `penulis`, `status`, `created_at`) VALUES
@@ -115,8 +130,8 @@ INSERT INTO `berita_akademik` (`id`, `judul`, `isi`, `tanggal`, `gambar`, `ringk
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `dashboard_stats`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `dashboard_stats`
+-- (See below for the actual view)
 --
 CREATE TABLE `dashboard_stats` (
 `metric` varchar(21)
@@ -128,7 +143,7 @@ CREATE TABLE `dashboard_stats` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen`
+-- Table structure for table `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -145,20 +160,20 @@ CREATE TABLE `dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `dosen`
+-- Dumping data for table `dosen`
 --
 
 INSERT INTO `dosen` (`id`, `user_id`, `nidn`, `nama`, `bidang_keahlian`, `fakultas_id`, `email`, `phone`, `alamat`, `created_at`) VALUES
-(13, 35, '197208870132', 'Nandang Suwela M.Kom.', 'Software Engineer', NULL, 'nandang@gmail.com', NULL, NULL, '2025-07-17 00:36:24'),
-(14, 36, '197208901745', 'Kiki Ismanti S.E., M.Pd.', 'Wirausaha', NULL, 'kikiismanti@gmail.com', NULL, NULL, '2025-07-17 00:38:56'),
-(16, 38, '197208940611', 'Muhammad Akrom, M.Ag', 'Guru Agama Islam', NULL, 'akrom@gmail.com', NULL, NULL, '2025-07-17 00:44:13'),
-(17, 39, '1', 'dosen', 'demo', NULL, 'dosen@gmail.com', NULL, NULL, '2025-07-17 00:45:08'),
-(18, 40, '197208920389', 'Noor Komari Pratiwi M.Pd.', 'Guru Bahasa Indonesia', NULL, 'noor@gmail.com', NULL, NULL, '2025-07-17 00:49:19');
+(13, 35, '197208870132', 'Nandang Suwela M.Kom.', 'Software Engineer', 9, 'nandang@gmail.com', NULL, NULL, '2025-07-17 00:36:24'),
+(14, 36, '197208901745', 'Kiki Ismanti S.E., M.Pd.', 'Wirausaha', 9, 'kikiismanti@gmail.com', NULL, NULL, '2025-07-17 00:38:56'),
+(16, 38, '197208940611', 'Muhammad Akrom, M.Ag', 'Guru Agama Islam', 9, 'akrom@gmail.com', NULL, NULL, '2025-07-17 00:44:13'),
+(18, 40, '197208920389', 'Noor Komari Pratiwi M.Pd.', 'Guru Bahasa Indonesia', 9, 'noor@gmail.com', NULL, NULL, '2025-07-17 00:49:19'),
+(20, 48, 'dosen', 'dosen', 'demo', 9, 'dosen@gmail.com', NULL, NULL, '2025-07-18 23:19:47');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `fakultas`
+-- Table structure for table `fakultas`
 --
 
 CREATE TABLE `fakultas` (
@@ -169,7 +184,7 @@ CREATE TABLE `fakultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `fakultas`
+-- Dumping data for table `fakultas`
 --
 
 INSERT INTO `fakultas` (`id`, `nama`, `dekan`, `created_at`) VALUES
@@ -181,7 +196,7 @@ INSERT INTO `fakultas` (`id`, `nama`, `dekan`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `galeri`
+-- Table structure for table `galeri`
 --
 
 CREATE TABLE `galeri` (
@@ -195,7 +210,7 @@ CREATE TABLE `galeri` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal`
+-- Table structure for table `jadwal`
 --
 
 CREATE TABLE `jadwal` (
@@ -210,7 +225,7 @@ CREATE TABLE `jadwal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `jadwal`
+-- Dumping data for table `jadwal`
 --
 
 INSERT INTO `jadwal` (`id`, `mata_kuliah_id`, `hari`, `jam_mulai`, `jam_selesai`, `ruang`, `kelas`, `created_at`) VALUES
@@ -222,7 +237,7 @@ INSERT INTO `jadwal` (`id`, `mata_kuliah_id`, `hari`, `jam_mulai`, `jam_selesai`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kalender_akademik`
+-- Table structure for table `kalender_akademik`
 --
 
 CREATE TABLE `kalender_akademik` (
@@ -235,7 +250,7 @@ CREATE TABLE `kalender_akademik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `kalender_akademik`
+-- Dumping data for table `kalender_akademik`
 --
 
 INSERT INTO `kalender_akademik` (`id`, `tanggal`, `judul`, `deskripsi`, `kategori`, `created_at`) VALUES
@@ -260,7 +275,7 @@ INSERT INTO `kalender_akademik` (`id`, `tanggal`, `judul`, `deskripsi`, `kategor
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -270,10 +285,24 @@ CREATE TABLE `kelas` (
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `mata_kuliah_id`, `mahasiswa_id`, `created_at`) VALUES
+(51, 21, 22, '2025-07-19 00:06:03'),
+(52, 19, 22, '2025-07-19 00:06:12'),
+(53, 21, 23, '2025-07-27 20:54:43'),
+(54, 19, 23, '2025-07-27 20:54:50'),
+(55, 18, 23, '2025-07-27 20:54:58'),
+(56, 20, 23, '2025-07-27 20:55:04'),
+(57, 18, 22, '2025-07-28 10:56:10'),
+(58, 20, 22, '2025-07-28 10:56:17');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kontak`
+-- Table structure for table `kontak`
 --
 
 CREATE TABLE `kontak` (
@@ -288,7 +317,7 @@ CREATE TABLE `kontak` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -299,24 +328,26 @@ CREATE TABLE `mahasiswa` (
   `program_studi_id` int(11) DEFAULT NULL,
   `semester` int(11) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
+  `status` varchar(20) DEFAULT 'Aktif',
   `phone` varchar(20) DEFAULT NULL,
   `alamat` text DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `user_id`, `nim`, `nama`, `program_studi_id`, `semester`, `email`, `phone`, `alamat`, `created_at`) VALUES
-(18, 28, '202243500497', 'Alfarobby', 24, 6, 'alfarobby@gmail.com', '081234567890', 'Dressrosa', '2025-07-17 00:18:06'),
-(19, 30, '202243500500', 'Ahmad Badawi', 24, 6, 'ahmadbadawi@gmail.com', '081234567891', 'Alabasta', '2025-07-17 00:19:50'),
-(20, 29, '202243500501', 'Abdur Rosyid Fachriansyah', 24, 6, 'abdurrosyid@gmail.com', '081234567892', 'Negeri Wano', '2025-07-17 00:20:45');
+INSERT INTO `mahasiswa` (`id`, `user_id`, `nim`, `nama`, `program_studi_id`, `semester`, `email`, `status`, `phone`, `alamat`, `created_at`) VALUES
+(22, 51, 'mahasiswa', 'password', 24, 6, 'mahasiswa@gmail.com', 'Aktif', NULL, NULL, '2025-07-18 23:59:09'),
+(23, 52, '202243500497', 'Alfarobby', 24, 6, 'alfarobby@gmail.com', 'Aktif', NULL, NULL, '2025-07-27 20:43:44'),
+(24, 53, '202243500501', 'Abdur Rosyid Fachriansyah', 24, 6, 'abdur@gmail.com', 'Aktif', NULL, NULL, '2025-07-27 20:44:29'),
+(25, 54, '202243500500', 'Ahmad Badawi', 24, 6, 'badawi@gmail.com', 'Aktif', NULL, NULL, '2025-07-27 20:45:16');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mata_kuliah`
+-- Table structure for table `mata_kuliah`
 --
 
 CREATE TABLE `mata_kuliah` (
@@ -333,7 +364,7 @@ CREATE TABLE `mata_kuliah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `mata_kuliah`
+-- Dumping data for table `mata_kuliah`
 --
 
 INSERT INTO `mata_kuliah` (`id`, `kode_mk`, `nama_mk`, `sks`, `semester`, `deskripsi`, `dosen_id`, `program_studi_id`, `created_at`, `updated_at`) VALUES
@@ -345,7 +376,7 @@ INSERT INTO `mata_kuliah` (`id`, `kode_mk`, `nama_mk`, `sks`, `semester`, `deskr
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai`
+-- Table structure for table `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -362,10 +393,24 @@ CREATE TABLE `nilai` (
   `updated_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `nilai`
+--
+
+INSERT INTO `nilai` (`id`, `mata_kuliah_id`, `mahasiswa_id`, `tugas1`, `tugas2`, `uts`, `uas`, `nilai_akhir`, `grade`, `created_at`, `updated_at`) VALUES
+(16, 20, 23, 100.00, 100.00, 100.00, 100.00, 100.00, 'A', '2025-07-28 10:55:49', '2025-07-28 10:56:53'),
+(18, 20, 22, 100.00, 50.00, 80.00, 100.00, 84.00, 'B', '2025-07-28 10:56:53', '2025-07-28 10:56:53'),
+(19, 19, 23, 80.00, 30.00, 25.00, 70.00, 50.50, 'D', '2025-07-28 11:02:47', '2025-07-28 11:02:47'),
+(20, 19, 22, 85.00, 35.00, 80.00, 100.00, 78.00, 'B', '2025-07-28 11:02:47', '2025-07-28 11:02:47'),
+(21, 21, 23, 90.00, 80.00, 34.00, 100.00, 74.20, 'B', '2025-07-28 11:03:41', '2025-07-28 11:03:41'),
+(22, 21, 22, 80.00, 85.00, 95.00, 100.00, 91.50, 'A', '2025-07-28 11:03:41', '2025-07-28 11:03:41'),
+(23, 18, 23, 100.00, 80.00, 35.00, 89.00, 73.20, 'B', '2025-07-28 11:05:14', '2025-07-28 11:05:14'),
+(24, 18, 22, 100.00, 90.00, 68.00, 85.00, 83.90, 'B', '2025-07-28 11:05:14', '2025-07-28 11:05:14');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `notifications`
+-- Table structure for table `notifications`
 --
 
 CREATE TABLE `notifications` (
@@ -379,7 +424,7 @@ CREATE TABLE `notifications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `notifications`
+-- Dumping data for table `notifications`
 --
 
 INSERT INTO `notifications` (`id`, `recipient_id`, `title`, `message`, `type`, `is_read`, `created_at`) VALUES
@@ -390,7 +435,7 @@ INSERT INTO `notifications` (`id`, `recipient_id`, `title`, `message`, `type`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengumuman`
+-- Table structure for table `pengumuman`
 --
 
 CREATE TABLE `pengumuman` (
@@ -402,7 +447,7 @@ CREATE TABLE `pengumuman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pengumuman`
+-- Dumping data for table `pengumuman`
 --
 
 INSERT INTO `pengumuman` (`id`, `judul`, `isi`, `tanggal`, `created_at`) VALUES
@@ -419,7 +464,7 @@ INSERT INTO `pengumuman` (`id`, `judul`, `isi`, `tanggal`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `program_studi`
+-- Table structure for table `program_studi`
 --
 
 CREATE TABLE `program_studi` (
@@ -431,7 +476,7 @@ CREATE TABLE `program_studi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `program_studi`
+-- Dumping data for table `program_studi`
 --
 
 INSERT INTO `program_studi` (`id`, `nama`, `fakultas_id`, `kaprodi`, `created_at`) VALUES
@@ -454,7 +499,7 @@ INSERT INTO `program_studi` (`id`, `nama`, `fakultas_id`, `kaprodi`, `created_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `system_settings`
+-- Table structure for table `system_settings`
 --
 
 CREATE TABLE `system_settings` (
@@ -467,7 +512,7 @@ CREATE TABLE `system_settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `system_settings`
+-- Dumping data for table `system_settings`
 --
 
 INSERT INTO `system_settings` (`id`, `setting_key`, `setting_value`, `setting_description`, `updated_by`, `updated_at`) VALUES
@@ -489,7 +534,46 @@ INSERT INTO `system_settings` (`id`, `setting_key`, `setting_value`, `setting_de
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `tugas`
+--
+
+CREATE TABLE `tugas` (
+  `id` int(11) NOT NULL,
+  `mata_kuliah_id` int(11) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `jenis` varchar(50) DEFAULT 'Tugas Individu',
+  `deadline` datetime NOT NULL,
+  `assigned_date` datetime DEFAULT current_timestamp(),
+  `file_tugas` varchar(255) DEFAULT NULL,
+  `max_file_size` varchar(10) DEFAULT '10MB',
+  `file_types` varchar(100) DEFAULT '.pdf,.doc,.docx,.zip',
+  `priority` varchar(20) DEFAULT 'medium',
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tugas_submissions`
+--
+
+CREATE TABLE `tugas_submissions` (
+  `id` int(11) NOT NULL,
+  `tugas_id` int(11) NOT NULL,
+  `mahasiswa_id` int(11) NOT NULL,
+  `file_path` varchar(255) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
+  `nilai` decimal(5,2) DEFAULT NULL,
+  `feedback` text DEFAULT NULL,
+  `submitted_at` datetime DEFAULT current_timestamp(),
+  `graded_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -508,24 +592,26 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `full_name`, `nip`, `email`, `phone`, `alamat`, `profile_photo`, `created_at`, `last_login`) VALUES
 (1, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'Administrator', NULL, 'admin@mpd.ac.id', NULL, NULL, 'avatar-1.jpg', '2025-07-16 22:22:24', NULL),
-(28, '202243500497', '$2y$10$GvrqDbdjzpEd9iXBK.D3zeGVlW8Q5P34TfhsVCEkZ0VV52Z2V552m', 'mahasiswa', 'Alfarobby', NULL, 'alfarobby@student.unindra.ac.id', NULL, NULL, 'avatar-1.jpg', '2025-07-16 23:03:14', NULL),
-(29, '202243500501', '$2y$10$BSqqT7695RWMXo7oHjIlOePRiaZIxQxpftodN1HTwps.n/EQQXXf6', 'mahasiswa', 'Abdur Rosyid Fachriansyah', NULL, 'abdurrosyid@student.unindra.ac.id', NULL, NULL, 'avatar-1.jpg', '2025-07-16 23:05:17', NULL),
-(30, '202243500500', '$2y$10$JsuT3wQl7pP.jAslGvNgZeQ6iyyKRLI4VivYsKE9k.7IrGj3ayh2G', 'mahasiswa', 'Ahmad Badawi', NULL, 'ahmadbadawi@student.unindra.ac.id', NULL, NULL, 'avatar-1.jpg', '2025-07-16 23:06:02', NULL),
 (35, '197208870132', '$2y$10$ZkkXxV7UMp64oPF4qVOGwucnRtIpK9.xJleBTwKwnnRcXfa5N9xyu', 'dosen', 'Nandang Suwela M.Kom.', NULL, 'nandang@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-17 00:36:24', NULL),
-(36, '197208901745', '$2y$10$.9o0stkmHBwYitlqGKhd8uMRK21DpHVUJsp0EJeciKd6yz5OF1knK', 'dosen', 'Kiki Ismanti S.E., M.Pd.', NULL, 'kikiismanti@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-17 00:38:56', NULL),
+(36, '197208901745', '$2y$10$.9o0stkmHBwYitlqGKhd8uMRK21DpHVUJsp0EJeciKd6yz5OF1knK', 'dosen', 'Kiki Ismanti S.E., M.Pd.', NULL, 'kikiismanti@gmail.com', NULL, NULL, 'avatar-5.svg', '2025-07-17 00:38:56', NULL),
 (38, '197208940611', '$2y$10$AVN7kFz/3DY3jNDejHEn1.4.ARwUPsBm0Y/w7kTvxmJLfoI7KKLjC', 'dosen', 'Muhammad Akrom, M.Ag', NULL, 'akrom@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-17 00:44:13', NULL),
-(39, '1', '$2y$10$cjzRoa/Ii81ozD4aQqNOHu4PvmXwRrMhauCrMzh1f98wHYdFdD2mK', 'dosen', 'dosen', NULL, 'dosen@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-17 00:45:08', NULL),
-(40, '197208920389', '$2y$10$QCVBzPwnPWxRmho2nd7K5eODe2cxufxliJ2FuPUFVy0nsSlzWC8y.', 'dosen', 'Noor Komari Pratiwi M.Pd.', NULL, 'noor@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-17 00:49:19', NULL);
+(40, '197208920389', '$2y$10$QCVBzPwnPWxRmho2nd7K5eODe2cxufxliJ2FuPUFVy0nsSlzWC8y.', 'dosen', 'Noor Komari Pratiwi M.Pd.', NULL, 'noor@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-17 00:49:19', NULL),
+(48, 'dosen', '$2y$10$JLM/8aEtJDo6X9x9LocAp.frstdrLX3iks2M7GxM5VXHQ8LcIviC6', 'dosen', 'dosen', NULL, 'dosen@gmail.com', NULL, NULL, 'avatar-1.svg', '2025-07-18 23:19:47', NULL),
+(51, 'mahasiswa', '$2y$10$twtxIN1nBdvVEcd4GTxbY.e8TIQ3FcHO6EtWmYZshbXi8AwIl6AY2', 'mahasiswa', 'password', NULL, 'mahasiswa@gmail.com', NULL, NULL, 'avatar-2.svg', '2025-07-18 23:59:09', NULL),
+(52, '202243500497', '$2y$10$4OMM5V0MUmNT.8wTGfJDsO00/GreFRVGFQucQN3CJUGZdTFI8KwDm', 'mahasiswa', 'Alfarobby', NULL, 'alfarobby@gmail.com', NULL, NULL, 'avatar-2.svg', '2025-07-27 20:43:44', NULL),
+(53, '202243500501', '$2y$10$DpH3ZhuA3IyK8keUsYk/aubUGQV/KBnW1rmLs3TtnL4CmALqjgl2W', 'mahasiswa', 'Abdur Rosyid Fachriansyah', NULL, 'abdur@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-27 20:44:29', NULL),
+(54, '202243500500', '$2y$10$bM29hlsRzPGI53YiqrP.WOlTf9pc./pgQzJ.3qOSsXw6sa9mpprBa', 'mahasiswa', 'Ahmad Badawi', NULL, 'badawi@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-27 20:45:16', NULL),
+(60, '3124253464', '$2y$10$vSjH5Fcg/jmQJBPE2eGCj.zhqtl3YwN.HYcLkrhgjMSNSbTtoeg4y', 'dosen', 'tes', NULL, 'tes@gmail.com', NULL, NULL, 'avatar-1.jpg', '2025-07-27 21:42:02', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `dashboard_stats`
+-- Structure for view `dashboard_stats`
 --
 DROP TABLE IF EXISTS `dashboard_stats`;
 
@@ -536,7 +622,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- Indeks untuk tabel `absensi`
+-- Indexes for table `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`),
@@ -544,27 +630,27 @@ ALTER TABLE `absensi`
   ADD KEY `mahasiswa_id` (`mahasiswa_id`);
 
 --
--- Indeks untuk tabel `admin_logs`
+-- Indexes for table `admin_logs`
 --
 ALTER TABLE `admin_logs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_id` (`admin_id`);
 
 --
--- Indeks untuk tabel `articles`
+-- Indexes for table `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `author_id` (`author_id`);
 
 --
--- Indeks untuk tabel `berita_akademik`
+-- Indexes for table `berita_akademik`
 --
 ALTER TABLE `berita_akademik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dosen`
+-- Indexes for table `dosen`
 --
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`id`),
@@ -573,32 +659,32 @@ ALTER TABLE `dosen`
   ADD KEY `fakultas_id` (`fakultas_id`);
 
 --
--- Indeks untuk tabel `fakultas`
+-- Indexes for table `fakultas`
 --
 ALTER TABLE `fakultas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `galeri`
+-- Indexes for table `galeri`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jadwal`
+-- Indexes for table `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id`),
   ADD KEY `mata_kuliah_id` (`mata_kuliah_id`);
 
 --
--- Indeks untuk tabel `kalender_akademik`
+-- Indexes for table `kalender_akademik`
 --
 ALTER TABLE `kalender_akademik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`),
@@ -606,13 +692,13 @@ ALTER TABLE `kelas`
   ADD KEY `mahasiswa_id` (`mahasiswa_id`);
 
 --
--- Indeks untuk tabel `kontak`
+-- Indexes for table `kontak`
 --
 ALTER TABLE `kontak`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id`),
@@ -621,7 +707,7 @@ ALTER TABLE `mahasiswa`
   ADD KEY `program_studi_id` (`program_studi_id`);
 
 --
--- Indeks untuk tabel `mata_kuliah`
+-- Indexes for table `mata_kuliah`
 --
 ALTER TABLE `mata_kuliah`
   ADD PRIMARY KEY (`id`),
@@ -630,7 +716,7 @@ ALTER TABLE `mata_kuliah`
   ADD KEY `program_studi_id` (`program_studi_id`);
 
 --
--- Indeks untuk tabel `nilai`
+-- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`id`),
@@ -638,27 +724,27 @@ ALTER TABLE `nilai`
   ADD KEY `mahasiswa_id` (`mahasiswa_id`);
 
 --
--- Indeks untuk tabel `notifications`
+-- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`),
   ADD KEY `recipient_id` (`recipient_id`);
 
 --
--- Indeks untuk tabel `pengumuman`
+-- Indexes for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `program_studi`
+-- Indexes for table `program_studi`
 --
 ALTER TABLE `program_studi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fakultas_id` (`fakultas_id`);
 
 --
--- Indeks untuk tabel `system_settings`
+-- Indexes for table `system_settings`
 --
 ALTER TABLE `system_settings`
   ADD PRIMARY KEY (`id`),
@@ -666,211 +752,250 @@ ALTER TABLE `system_settings`
   ADD KEY `updated_by` (`updated_by`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `tugas`
+--
+ALTER TABLE `tugas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mata_kuliah_id` (`mata_kuliah_id`);
+
+--
+-- Indexes for table `tugas_submissions`
+--
+ALTER TABLE `tugas_submissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_submission` (`tugas_id`,`mahasiswa_id`),
+  ADD KEY `mahasiswa_id` (`mahasiswa_id`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `absensi`
+-- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT untuk tabel `admin_logs`
+-- AUTO_INCREMENT for table `admin_logs`
 --
 ALTER TABLE `admin_logs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `articles`
+-- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `berita_akademik`
+-- AUTO_INCREMENT for table `berita_akademik`
 --
 ALTER TABLE `berita_akademik`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `dosen`
+-- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `fakultas`
+-- AUTO_INCREMENT for table `fakultas`
 --
 ALTER TABLE `fakultas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `galeri`
+-- AUTO_INCREMENT for table `galeri`
 --
 ALTER TABLE `galeri`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jadwal`
+-- AUTO_INCREMENT for table `jadwal`
 --
 ALTER TABLE `jadwal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `kalender_akademik`
+-- AUTO_INCREMENT for table `kalender_akademik`
 --
 ALTER TABLE `kalender_akademik`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT untuk tabel `kontak`
+-- AUTO_INCREMENT for table `kontak`
 --
 ALTER TABLE `kontak`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `mahasiswa`
+-- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `mata_kuliah`
+-- AUTO_INCREMENT for table `mata_kuliah`
 --
 ALTER TABLE `mata_kuliah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `nilai`
+-- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `notifications`
+-- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `pengumuman`
+-- AUTO_INCREMENT for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `program_studi`
+-- AUTO_INCREMENT for table `program_studi`
 --
 ALTER TABLE `program_studi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT untuk tabel `system_settings`
+-- AUTO_INCREMENT for table `system_settings`
 --
 ALTER TABLE `system_settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `tugas`
+--
+ALTER TABLE `tugas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tugas_submissions`
+--
+ALTER TABLE `tugas_submissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `absensi`
+-- Constraints for table `absensi`
 --
 ALTER TABLE `absensi`
   ADD CONSTRAINT `absensi_ibfk_1` FOREIGN KEY (`mata_kuliah_id`) REFERENCES `mata_kuliah` (`id`),
   ADD CONSTRAINT `absensi_ibfk_2` FOREIGN KEY (`mahasiswa_id`) REFERENCES `mahasiswa` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `admin_logs`
+-- Constraints for table `admin_logs`
 --
 ALTER TABLE `admin_logs`
   ADD CONSTRAINT `admin_logs_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `articles`
+-- Constraints for table `articles`
 --
 ALTER TABLE `articles`
   ADD CONSTRAINT `articles_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `dosen`
+-- Constraints for table `dosen`
 --
 ALTER TABLE `dosen`
   ADD CONSTRAINT `dosen_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `dosen_ibfk_2` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `jadwal`
+-- Constraints for table `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`mata_kuliah_id`) REFERENCES `mata_kuliah` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `kelas`
+-- Constraints for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`mata_kuliah_id`) REFERENCES `mata_kuliah` (`id`),
   ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`mahasiswa_id`) REFERENCES `mahasiswa` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `mahasiswa`
+-- Constraints for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`program_studi_id`) REFERENCES `program_studi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `mata_kuliah`
+-- Constraints for table `mata_kuliah`
 --
 ALTER TABLE `mata_kuliah`
   ADD CONSTRAINT `mata_kuliah_ibfk_1` FOREIGN KEY (`dosen_id`) REFERENCES `dosen` (`id`),
   ADD CONSTRAINT `mata_kuliah_ibfk_2` FOREIGN KEY (`program_studi_id`) REFERENCES `program_studi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `nilai`
+-- Constraints for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`mata_kuliah_id`) REFERENCES `mata_kuliah` (`id`),
   ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`mahasiswa_id`) REFERENCES `mahasiswa` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `notifications`
+-- Constraints for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`recipient_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `program_studi`
+-- Constraints for table `program_studi`
 --
 ALTER TABLE `program_studi`
   ADD CONSTRAINT `program_studi_ibfk_1` FOREIGN KEY (`fakultas_id`) REFERENCES `fakultas` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `system_settings`
+-- Constraints for table `system_settings`
 --
 ALTER TABLE `system_settings`
   ADD CONSTRAINT `system_settings_ibfk_1` FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `tugas`
+--
+ALTER TABLE `tugas`
+  ADD CONSTRAINT `tugas_ibfk_1` FOREIGN KEY (`mata_kuliah_id`) REFERENCES `mata_kuliah` (`id`);
+
+--
+-- Constraints for table `tugas_submissions`
+--
+ALTER TABLE `tugas_submissions`
+  ADD CONSTRAINT `tugas_submissions_ibfk_1` FOREIGN KEY (`mahasiswa_id`) REFERENCES `mahasiswa` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
