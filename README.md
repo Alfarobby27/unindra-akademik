@@ -7,7 +7,7 @@
 <p style="font-size: 18px;">Portal akademik modern untuk mengelola sistem informasi universitas dengan antarmuka yang responsif dan user-friendly.</p>
 
 ## 📋 Daftar Isi
-
+- [Flowchart](#-flowchart)
 - [Fitur Utama](#-fitur-utama)
 - [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
 - [Persyaratan Sistem](#-persyaratan-sistem)
@@ -25,6 +25,11 @@
 - [Developer](#-developer)
 - [Acknowledgments](#-acknowledgments)
 
+## 📈 Flowchart
+
+<p align="center">
+  <img src="flowchart/flowchart.jpg" alt="Flowchart" />
+</p>
 
 ## 🚀 Fitur Utama
 
@@ -227,6 +232,9 @@ unindra-akademik/
 │
 ├── database/                             # Database SQL dan konfigurasi
 │   └── unindra.sql                       # File struktur dan data database
+|
+├── flowchart/                             # Flowchart
+│   └── flowchart.jpg                      # Gambar Flowchart
 │
 ├── dosen/                                # Modul untuk dashboard Dosen
 │   ├── index.php                         # Halaman utama dosen
