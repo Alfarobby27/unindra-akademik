@@ -7,6 +7,7 @@
 <p style="font-size: 18px;">Portal akademik modern untuk mengelola sistem informasi universitas dengan antarmuka yang responsif dan user-friendly.</p>
 
 ## 📋 Daftar Isi
+
 - [Flowchart](#-flowchart)
 - [Fitur Utama](#-fitur-utama)
 - [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
