@@ -198,39 +198,62 @@ http://localhost/unindra-akademik/
 
 ```
 unindra-akademik/
-├── admin/                  # Admin dashboard & functions
+├── admin/                 # Admin dashboard & functions
 │   ├── index.php          # Admin homepage
 │   ├── mahasiswa.php      # Student management
 │   ├── dosen.php          # Lecturer management
 │   ├── mata_kuliah.php    # Course management
 │   ├── pengaturan.php     # System settings
 │   ├── article.php        # Article management
+│   ├── jadwal.php
+│   ├── laporan.php
+│   ├── profile.php
 │   └── includes/          # Admin navigation & components
+|     └── nav_admin.php    
+├── assets/                # Static assets
+│   ├── css/               # Stylesheets
+│   ├── img/               # Images & logos
+│   └── uploads/           # User uploaded files
+├── auth/                  # Authentication system
+│   └── process_login.php  # Login handler
+├── classes/               
+│   └── UserManager.php
+├── config/                  
+│   └── avatar_config.php
+├── database/                  
+│   └── unindra.sql  
 ├── dosen/                 # Lecturer dashboard
 │   ├── index.php          # Lecturer homepage
 │   ├── mata_kuliah.php    # Course management
+│   ├── nilai.php          # Grades & transcript
+│   ├── absensi.php
+│   ├── jadwal.php
 │   ├── profile.php        # Profile management
 │   └── includes/          # Lecturer navigation
+|     └── nav_dosen.php
+├── includes/              # Shared components
+│   ├── nav.php            # Main navigation
+│   └── footer.php         # Footer component
 ├── mahasiswa/             # Student dashboard
 │   ├── index.php          # Student homepage
 │   ├── mata_kuliah.php    # Course info
 │   ├── nilai.php          # Grades & transcript
 │   ├── tugas.php          # Assignments
+│   ├── profile.php
+│   ├── absensi.php
+│   ├── jadwal.php
 │   └── includes/          # Student navigation
-├── assets/                # Static assets
-│   ├── css/              # Stylesheets
-│   ├── img/              # Images & logos
-│   └── uploads/          # User uploaded files
-├── auth/                  # Authentication system
-│   └── process_login.php  # Login handler
-├── includes/              # Shared components
-│   ├── nav.php           # Main navigation
-│   └── footer.php        # Footer component
-├── index.php             # Homepage
-├── login.php             # Login page
+|     └── nav_mahasiswa.php    
+├── .gitattributes
+├── LICENSE
+├── README.md
 ├── akademik.php          # Academic information
-├── profile.php           # University profile
-└── koneksi.php           # Database connection
+├── berita.php          
+├── index.php             # Homepage
+├── informasi.php
+├── koneksi.php           # Database connection
+├── login.php             # Login page
+└── profile.php           # University profile
 ```
 
 ## 👥 User Roles
