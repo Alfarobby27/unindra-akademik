@@ -8,22 +8,25 @@
 
 ## 📋 Daftar Isi
 
-- [🚀 Fitur Utama](#fitur-utama)
-- [🛠 Teknologi yang Digunakan](#teknologi-yang-digunakan)
-- [Persyaratan Sistem](#persyaratan-sistem)
-- [Instalasi](#instalasi)
-- [Konfigurasi](#konfigurasi)
-- [Penggunaan](#penggunaan)
-- [Struktur Project](#struktur-project)
-- [User Roles](#user-roles)
-- [Fitur UI/UX](#fitur-uiux)
-- [Keamanan](#keamanan)
-- [Mobile Responsiveness](#mobile-responsiveness)
-- [Troubleshooting](#troubleshooting)
-- [Kontribusi](#kontribusi)
-- [Lisensi](#lisensi)
-- [Developer](#developer)
-- [Acknowledgments](#acknowledgments)
+## 📋 Daftar Isi
+
+- [Fitur Utama](#-fitur-utama)
+- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
+- [Persyaratan Sistem](#-persyaratan-sistem)
+- [Instalasi](#-instalasi)
+- [Konfigurasi](#-konfigurasi)
+- [Penggunaan](#-penggunaan)
+- [Struktur Project](#-struktur-project)
+- [User Roles](#-user-roles)
+- [Fitur UI/UX](#-fitur-uiux)
+- [Keamanan](#-keamanan)
+- [Mobile Responsiveness](#-mobile-responsiveness)
+- [Troubleshooting](#-troubleshooting)
+- [Kontribusi](#-kontribusi)
+- [Lisensi](#-lisensi)
+- [Developer](#-developer)
+- [Acknowledgments](#-acknowledgments)
+
 
 ## 🚀 Fitur Utama
 
