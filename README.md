@@ -110,8 +110,8 @@ cp -r unindra-akademik/ /var/www/html/
 ### 3. Buat Database
 
 ```sql
-CREATE DATABASE unindra-akademik;
-USE unindra-akademik;
+CREATE DATABASE unindra;
+USE unindra;
 
 -- Import struktur database
 SOURCE database/unindra.sql;
